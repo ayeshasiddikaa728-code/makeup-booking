@@ -1,13 +1,18 @@
 <?php
-include(__DIR__ . '/../config/db.php');
-?>
 
-<h2> Our Services</h2>
+include("../config/db.php");
 
-<?php
-$result = $conn->query("SELECT * FROM services");
+$service = $_POST['service_id'];
+$name = $_POST['name'];
+$date = $_POST['date'];
+$time = $_POST['time'];
 
-while($row = $result->fetch_assoc()){
-    echo "<h3>".$row['name']."</h3>";
+$sql = "INSERT INTO bookings(service_id, customer_name, booking_date, booking_time)
+VALUES('$service','$name','$date','$time')";
+
+if($conn->query($sql)){
+    echo "Booking Successful";
+}else{
+    echo "Booking Failed";
 }
 ?>

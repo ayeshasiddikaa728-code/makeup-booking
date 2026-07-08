@@ -1,9 +1,10 @@
-//  simple alert after booking
+// Booking success alert
 function bookingSuccess() {
-    alert("💖 Booking Successful!");
+    alert("💖 Booking Successful! Thank you for choosing GlamBook.");
 }
 
-// 🗑 delete confirm
+
+// Delete confirmation
 function confirmDelete() {
-    return confirm("Are you sure to delete?");
+    return confirm("🗑 Are you sure you want to delete this item?");
 }

@@ -1,26 +1,69 @@
 <?php
+
 session_start();
-include('../admin/db.php');
+
+include("../config/db.php");
 
 if(isset($_POST['login'])){
-    $u = $_POST['username'];
-    $p = $_POST['password'];
 
-    $sql = "SELECT * FROM admin WHERE username='$u' AND password='$p'";
-    $result = $conn->query($sql);
+$username=$_POST['username'];
 
-    if($result->num_rows > 0){
-        $_SESSION['admin'] = $u;
-        header("Location: dashboard.php");
-    } else {
-        echo " Invalid login";
-    }
+$password=$_POST['password'];
+
+$sql="SELECT * FROM admin
+
+WHERE username='$username'
+
+AND password='$password'";
+
+$result=$conn->query($sql);
+
+if($result->num_rows>0){
+
+$_SESSION['admin']=$username;
+
+header("Location:dashboard.php");
+
+exit();
+
 }
+
+else{
+
+echo "Wrong Username or Password";
+
+}
+
+}
+
 ?>
 
 <form method="POST">
-    <h2>Admin Login</h2>
-    <input type="text" name="username" placeholder="Username"><br>
-    <input type="password" name="password" placeholder="Password"><br>
-    <button name="login">Login</button>
+
+<input
+
+type="text"
+
+name="username"
+
+placeholder="Username">
+
+<br><br>
+
+<input
+
+type="password"
+
+name="password"
+
+placeholder="Password">
+
+<br><br>
+
+<button name="login">
+
+Login
+
+</button>
+
 </form>
